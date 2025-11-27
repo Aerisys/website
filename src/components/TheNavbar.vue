@@ -32,7 +32,7 @@ onUnmounted(() => {
       <div class="flex justify-between h-16">
         <div class="flex items-center">
           <router-link to="/" class="flex items-center space-x-3">
-            <img src="/icon_skylab_light.png" alt="Logo" class="h-8 w-8" />
+            <img src="/logo_aerisys_05.png" alt="Logo" class="h-8 w-8" />
             <span class="text-2xl font-bold text-primary-100">Aerisys</span>
           </router-link>
         </div>
