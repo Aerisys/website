@@ -11,8 +11,23 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    AppFooter: typeof import('./src/components/layout/AppFooter.vue')['default']
+    AppHeader: typeof import('./src/components/layout/AppHeader.vue')['default']
+    BaseButton: typeof import('./src/components/ui/BaseButton.vue')['default']
+    ConceptSection: typeof import('./src/components/sections/ConceptSection.vue')['default']
+    FaqAccordion: typeof import('./src/components/ui/FaqAccordion.vue')['default']
+    FaqSection: typeof import('./src/components/sections/FaqSection.vue')['default']
+    FeatureCard: typeof import('./src/components/ui/FeatureCard.vue')['default']
+    FlipCard: typeof import('./src/components/ui/FlipCard.vue')['default']
+    GallerySection: typeof import('./src/components/sections/GallerySection.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+    HeroSection: typeof import('./src/components/sections/HeroSection.vue')['default']
     MorphingTabs: typeof import('./src/components/MorphingTabs.vue')['default']
     Motion: typeof import('motion-v')['Motion']
+    ProjectSection: typeof import('./src/components/sections/ProjectSection.vue')['default']
+    SectionTitle: typeof import('./src/components/ui/SectionTitle.vue')['default']
+    TeamCard: typeof import('./src/components/ui/TeamCard.vue')['default']
+    TeamSection: typeof import('./src/components/sections/TeamSection.vue')['default']
+    TechnologiesSection: typeof import('./src/components/sections/TechnologiesSection.vue')['default']
   }
 }

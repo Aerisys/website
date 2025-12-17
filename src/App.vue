@@ -1,31 +1,29 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import { ref } from "vue";
-
-const tabs = ["Home", "Apps", "About", "My"];
-const activeTab = ref(tabs[0]);
+import AppHeader from '@/components/layout/AppHeader.vue'
+import AppFooter from '@/components/layout/AppFooter.vue'
+import HeroSection from '@/components/sections/HeroSection.vue'
+import ProjectSection from '@/components/sections/ProjectSection.vue'
+import ConceptSection from '@/components/sections/ConceptSection.vue'
+import TechnologiesSection from '@/components/sections/TechnologiesSection.vue'
+import GallerySection from '@/components/sections/GallerySection.vue'
+import TeamSection from '@/components/sections/TeamSection.vue'
+import FaqSection from '@/components/sections/FaqSection.vue'
 </script>
 
 <template>
-        <MorphingTabs
-            :tabs="tabs"
-            :active-tab="activeTab"
-            @update:active-tab="activeTab = $event"
-        />
-  <HelloWorld msg="Vite + Vue" />
+  <div class="min-h-screen">
+    <AppHeader />
+    
+    <main>
+      <HeroSection />
+      <ProjectSection />
+      <ConceptSection />
+      <TechnologiesSection />
+      <GallerySection />
+      <TeamSection />
+      <FaqSection />
+    </main>
+    
+    <AppFooter />
+  </div>
 </template>
-
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
