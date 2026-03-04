@@ -142,6 +142,12 @@ html.light{
 	color-scheme: light;
 }
 
+/* Custom brand utilities */
+.text-tertiary{ color: #3e3e3d; }
+.bg-tertiary{ background-color: #3e3e3d; }
+.text-ink{ color: #030303; }
+.bg-ink{ background-color: #030303; }
+
 /* Custom components - using CSS instead of @apply for responsive */
 .container-custom{
 	max-width: 80rem;

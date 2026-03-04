@@ -3,7 +3,7 @@ import SectionTitle from '@/components/ui/SectionTitle.vue';
 </script>
 
 <template>
-    <section class="section-padding bg-gradient-to-br from-primary-50 via-blue-50 to-sky-50">
+    <section class="section-padding bg-linear-to-br from-primary-50 via-blue-50 to-sky-50">
         <div class="container-custom">
             <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                 <!-- Content -->
@@ -21,14 +21,14 @@ import SectionTitle from '@/components/ui/SectionTitle.vue';
 
                     <p class="text-gray-600 leading-relaxed mb-6">
                         Aerisys transforme une ambition simple en réalité technologique: créer un drone entièrement pensé et développé par une équipe étudiante.
-                        De la conception 3D du châssis à la programmation ESP32, en passant par le développement de la radiocommande sur-mesure et l'application mobile, chaque étape est maîtrisée en interne.
+                        De la conception 3D du châssis à la programmation ESP32, en passant par le développement de la radiocommande sur-mesure et l'application obile, chaque étape est maîtrisée en interne.
                         <br />
                         Le résultat ? Un système modulable, personnalisable et écologique, conçu pour les passionnés, les makers et les usages éducatifs.
                     </p>
 
                     <div class="space-y-4">
                         <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center shrink-0">
                                 <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
@@ -40,7 +40,7 @@ import SectionTitle from '@/components/ui/SectionTitle.vue';
                         </div>
 
                         <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center shrink-0">
                                 <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
@@ -52,7 +52,7 @@ import SectionTitle from '@/components/ui/SectionTitle.vue';
                         </div>
 
                         <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center shrink-0">
                                 <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>

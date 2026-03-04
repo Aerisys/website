@@ -1,5 +1,6 @@
 <script setup>
 import {ref, onMounted, onUnmounted} from 'vue';
+import { RouterLink } from 'vue-router';
 import BaseButton from '@/components/ui/BaseButton.vue';
 
 const isScrolled = ref(false);
@@ -7,11 +8,11 @@ const isMobileMenuOpen = ref(false);
 
 const navLinks = [
     {
-        name: 'Le Projet',
+        name: 'Le projet',
         href: '#projet'
     },
     {
-        name: 'L\'Équipe',
+        name: 'L\'équipe',
         href: '#equipe'
     },
     {
@@ -19,8 +20,8 @@ const navLinks = [
         href: '#faq'
     },
     {
-        name: 'Application Mobile',
-        href: '#app'
+        name: 'Application mobile',
+        href: '/app'
     }
 ];
 
@@ -53,29 +54,46 @@ onUnmounted(() => {
         <div class="container-custom">
             <nav class="flex items-center justify-between h-16 md:h-20">
                 <!-- Logo -->
-                <a href="#" class="flex items-center gap-2">
-                    <svg class="w-8 h-8 text-primary-600" viewBox="0 0 32 32" fill="currentColor">
-                        <path d="M16 2L4 8v16l12 6 12-6V8L16 2zm0 4l8 4-8 4-8-4 8-4zm-10 7.5l10 5v9l-10-5v-9zm20 0v9l-10 5v-9l10-5z" />
-                    </svg>
+                <RouterLink to="/" class="flex items-center gap-2">
+                    <img :src="isScrolled ? '/logo/black.svg' : '/logo/white.svg'"
+                         alt="Logo"
+                         class="h-10 w-10 ml-0" />
                     <span
                         class="text-xl font-bold font-display transition-colors"
                         :class="isScrolled ? 'text-gray-900' : 'text-white'"
                     >
             AERISYS
           </span>
-                </a>
+                </RouterLink>
 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center gap-8">
-                    <a
-                        v-for="link in navLinks"
-                        :key="link.name"
-                        :href="link.href"
-                        class="text-sm font-medium transition-colors hover:text-primary-500"
-                        :class="isScrolled ? 'text-gray-700' : 'text-white/90'"
-                    >
-                        {{ link.name }}
-                    </a>
+                    <template v-for="link in navLinks" :key="link.name">
+                        <RouterLink
+                          v-if="link.href.startsWith('/')"
+                          :to="link.href"
+                          class="text-sm font-medium transition-colors hover:text-primary-500"
+                          :class="isScrolled ? 'text-gray-700' : 'text-white/90'"
+                        >
+                          {{ link.name }}
+                        </RouterLink>
+                        <RouterLink
+                          v-else-if="link.href.startsWith('#')"
+                          :to="{ path: '/', hash: link.href }"
+                          class="text-sm font-medium transition-colors hover:text-primary-500"
+                          :class="isScrolled ? 'text-gray-700' : 'text-white/90'"
+                        >
+                          {{ link.name }}
+                        </RouterLink>
+                        <a
+                          v-else
+                          :href="link.href"
+                          class="text-sm font-medium transition-colors hover:text-primary-500"
+                          :class="isScrolled ? 'text-gray-700' : 'text-white/90'"
+                        >
+                          {{ link.name }}
+                        </a>
+                    </template>
                 </div>
 
                 <!-- CTA Button -->
@@ -126,15 +144,32 @@ onUnmounted(() => {
                 class="md:hidden bg-white border-t border-gray-100 shadow-lg"
             >
                 <div class="container-custom py-4 space-y-3">
-                    <a
-                        v-for="link in navLinks"
-                        :key="link.name"
-                        :href="link.href"
-                        class="block py-2 text-gray-700 hover:text-primary-600 font-medium"
-                        @click="closeMobileMenu"
-                    >
-                        {{ link.name }}
-                    </a>
+                    <template v-for="link in navLinks" :key="link.name">
+                        <RouterLink
+                          v-if="link.href.startsWith('/')"
+                          :to="link.href"
+                          class="block py-2 text-gray-700 hover:text-primary-600 font-medium"
+                          @click="closeMobileMenu"
+                        >
+                          {{ link.name }}
+                        </RouterLink>
+                        <RouterLink
+                          v-else-if="link.href.startsWith('#')"
+                          :to="{ path: '/', hash: link.href }"
+                          class="block py-2 text-gray-700 hover:text-primary-600 font-medium"
+                          @click="closeMobileMenu"
+                        >
+                          {{ link.name }}
+                        </RouterLink>
+                        <a
+                          v-else
+                          :href="link.href"
+                          class="block py-2 text-gray-700 hover:text-primary-600 font-medium"
+                          @click="closeMobileMenu"
+                        >
+                          {{ link.name }}
+                        </a>
+                    </template>
                     <BaseButton variant="primary" size="md" class="w-full mt-4">
                         Boutique
                     </BaseButton>

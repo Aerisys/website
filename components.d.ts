@@ -25,6 +25,8 @@ declare module 'vue' {
     MorphingTabs: typeof import('./src/components/MorphingTabs.vue')['default']
     Motion: typeof import('motion-v')['Motion']
     ProjectSection: typeof import('./src/components/sections/ProjectSection.vue')['default']
+    RouterLink: typeof import('vue-router')['RouterLink']
+    RouterView: typeof import('vue-router')['RouterView']
     SectionTitle: typeof import('./src/components/ui/SectionTitle.vue')['default']
     TeamCard: typeof import('./src/components/ui/TeamCard.vue')['default']
     TeamSection: typeof import('./src/components/sections/TeamSection.vue')['default']
