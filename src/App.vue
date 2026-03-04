@@ -1,7 +1,13 @@
 <script setup>
+import { ref, provide } from 'vue'
+import { RouterView } from 'vue-router'
 import AppHeader from '@/components/layout/AppHeader.vue'
 import AppFooter from '@/components/layout/AppFooter.vue'
-import {RouterView} from 'vue-router'
+import CartDrawer from '@/components/ui/CartDrawer.vue'
+import ConsentBanner from '@/components/ui/ConsentBanner.vue'
+
+const cartDrawerOpen = ref(false)
+provide('cartDrawerOpen', cartDrawerOpen)
 </script>
 
 <template>
@@ -10,6 +16,9 @@ import {RouterView} from 'vue-router'
 
         <RouterView/>
 
-        <AppFooter/>
-    </div>
+    <AppFooter />
+
+    <CartDrawer />
+    <ConsentBanner />
+  </div>
 </template>

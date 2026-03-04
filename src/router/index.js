@@ -1,6 +1,13 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import HomePage from '@/pages/HomePage.vue'
 import AppMobile from '@/pages/AppMobile.vue'
+import CheckoutPage from '@/pages/CheckoutPage.vue'
+import CheckoutSuccessPage from '@/pages/CheckoutSuccessPage.vue'
+import BoutiquePage from '@/pages/BoutiquePage.vue'
+import ProductDetailPage from '@/pages/ProductDetailPage.vue'
+import MentionsLegalesPage from '@/pages/legal/MentionsLegalesPage.vue'
+import PolitiqueConfidentialitePage from '@/pages/legal/PolitiqueConfidentialitePage.vue'
+import CGVPage from '@/pages/legal/CGVPage.vue'
 
 const DEFAULT_TITLE = 'Aerisys — Drone DIY Open Source | Kits, Composants & Tutoriels'
 const DEFAULT_DESCRIPTION = 'Aerisys : kit drone DIY open source à construire soi-même. Châssis impression 3D, ESP32, application mobile. Idéal pour étudiants, makers et passionnés de robotique et aéronautique.'
@@ -26,14 +33,21 @@ const router = createRouter({
                 description: 'L\'application mobile Aerisys : pilotez, configurez et analysez votre drone DIY open source depuis votre smartphone. Interface intuitive disponible sur iOS et Android.',
             },
         },
-    ],
-    scrollBehavior(to, from, savedPosition) {
-        if (savedPosition) return savedPosition
-        if (to.hash) {
-            return {el: to.hash, behavior: 'smooth'}
-        }
-        return {top: 0}
-    },
+    { path: '/boutique', name: 'boutique', component: BoutiquePage },
+    { path: '/boutique/:slug', name: 'product-detail', component: ProductDetailPage },
+    { path: '/checkout', name: 'checkout', component: CheckoutPage },
+    { path: '/checkout/success', name: 'checkout-success', component: CheckoutSuccessPage },
+    { path: '/mentions-legales', name: 'mentions-legales', component: MentionsLegalesPage },
+    { path: '/politique-confidentialite', name: 'politique-confidentialite', component: PolitiqueConfidentialitePage },
+    { path: '/cgv', name: 'cgv', component: CGVPage },
+  ],
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) return savedPosition
+    if (to.hash) {
+      return { el: to.hash, behavior: 'smooth' }
+    }
+    return { top: 0 }
+  },
 })
 
 router.afterEach((to) => {

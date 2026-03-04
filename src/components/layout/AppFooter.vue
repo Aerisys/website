@@ -1,36 +1,75 @@
 <script setup>
-import {ref} from 'vue'
+import {ref} from 'vue';
+import {RouterLink} from 'vue-router';
 
-const email = ref('')
+const email = ref('');
 
 const footerLinks = {
     accueil: [
-        {name: 'Le projet', href: '/'},
-        {name: 'L\'équipe', href: '/#equipe'},
-        {name: 'FAQ', href: '/#faq'},
-        {name: 'Application mobile', href: 'app'}
+        {
+            name: 'La home',
+            href: '#'
+        },
+        {
+            name: 'L\'équipe',
+            href: '#equipe'
+        },
+        {
+            name: 'FAQ',
+            href: '#faq'
+        },
+        {
+            name: 'Timeline',
+            href: '#'
+        }
     ],
     boutique: [
-        {name: 'Les Kits', href: '#'},
-        {name: 'Composants', href: '#'},
-        {name: 'Mes commandes', href: '#'},
-        {name: 'Selection', href: '#'}
+        {
+            name: 'Les Kits',
+            href: '/boutique?category=drones'
+        },
+        {
+            name: 'Composants',
+            href: '/boutique?category=composants'
+        },
+        {
+            name: 'Mes commandes',
+            href: '/checkout'
+        },
+        {
+            name: 'Selection',
+            href: '/boutique'
+        }
     ],
     wiki: [
         {name: 'Assemblage', href: 'https://wiki.aerisys.fr/'},
         {name: 'Calibration', href: 'https://wiki.aerisys.fr/'},
         {name: 'Dépannage', href: 'https://wiki.aerisys.fr/'}
+    ],
+    legal: [
+        {
+            name: 'Mentions légales',
+            href: '/mentions-legales'
+        },
+        {
+            name: 'CGV',
+            href: '/cgv'
+        },
+        {
+            name: 'Confidentialité',
+            href: '/politique-confidentialite'
+        }
     ]
-}
+};
 
 const currentYear = new Date().getFullYear()
 
 const handleSubmit = () => {
     if (email.value) {
-        console.log('Newsletter subscription:', email.value)
-        email.value = ''
+        console.log('Newsletter subscription:', email.value);
+        email.value = '';
     }
-}
+};
 </script>
 
 <template>
@@ -95,6 +134,17 @@ const handleSubmit = () => {
                     </ul>
                 </div>
 
+                <!-- Légal -->
+                <div>
+                    <h4 class="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-4">Légal</h4>
+                    <ul class="space-y-2">
+                        <li v-for="link in footerLinks.legal" :key="link.name">
+                            <RouterLink :to="link.href" class="text-gray-300 hover:text-white transition-colors text-sm">
+                                {{ link.name }}
+                            </RouterLink>
+                        </li>
+                    </ul>
+                </div>
                 <!-- Newsletter & App -->
                 <div class="col-span-2 md:col-span-1">
                     <h4 class="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-4">App Mobile</h4>
