@@ -35,6 +35,7 @@ export default defineComponent({
 </script>
 
 <template>
+
   <img :src="section.image" :alt="section.title" class="w-full h-64 object-cover" />
   <div class="absolute inset-0 bg-gradient-to-t from-primary-600 to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>
   <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
