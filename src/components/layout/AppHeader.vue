@@ -67,20 +67,6 @@ onUnmounted(() => {
             AERISYS
           </span>
         </RouterLink>
-    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-            :class="isScrolled ? 'bg-white/95 backdrop-blur-md shadow-sm' : 'bg-transparent'">
-        <div class="container-custom">
-            <nav aria-label="Navigation principale" class="flex items-center justify-between h-16 md:h-20">
-                <!-- Logo -->
-                <RouterLink to="/" class="flex items-center gap-2" aria-label="Aerisys - Accueil">
-                    <img :src="isScrolled ? '/logo/black.svg' : '/logo/white.svg'"
-                         alt="Logo Aerisys"
-                         class="h-10 w-10 ml-0"/>
-                    <span class="text-xl font-bold font-display transition-colors"
-                          :class="isScrolled ? 'text-gray-900' : 'text-white'">
-                        AERISYS
-                    </span>
-                </RouterLink>
 
         <!-- Desktop Navigation -->
         <div class="hidden md:flex items-center gap-8">
