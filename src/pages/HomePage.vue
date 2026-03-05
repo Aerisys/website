@@ -9,14 +9,14 @@ import FaqSection from '@/components/sections/FaqSection.vue'
 </script>
 
 <template>
-  <main>
-    <HeroSection />
-    <ProjectSection />
-    <ConceptSection />
-    <TechnologiesSection />
-    <GallerySection />
-    <TeamSection />
-    <FaqSection />
-  </main>
+    <main>
+        <HeroSection/>
+        <ProjectSection/>
+        <ConceptSection/>
+        <TechnologiesSection/>
+        <GallerySection/>
+        <TeamSection/>
+        <FaqSection/>
+    </main>
 </template>
 

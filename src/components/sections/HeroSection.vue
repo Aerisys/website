@@ -6,7 +6,7 @@ import BaseButton from '@/components/ui/BaseButton.vue';
     <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
         <!-- Background Image -->
         <div class="absolute inset-0 h-full w-full z-10">
-            <div class="absolute inset-0 bg-[url('/images/home/hero-bg.png')] bg-cover bg-center bg-no-repeat" />
+            <div class="absolute inset-0 bg-[url('/images/home/hero-bg.png')] bg-cover bg-center bg-no-repeat"/>
         </div>
 
         <!-- Content -->
@@ -29,11 +29,17 @@ import BaseButton from '@/components/ui/BaseButton.vue';
             <!-- Boutons en bas -->
             <div class="pt-6 pb-6 flex items-center justify-center">
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full max-w-md">
-                    <BaseButton variant="primary" size="lg" href="#projet" class="w-full sm:w-auto">
+                    <BaseButton variant="primary"
+                                size="lg"
+                                href="#projet"
+                                class="w-full sm:w-auto">
                         Découvrir le Kit
                     </BaseButton>
 
-                    <BaseButton variant="outline" size="lg" href="#" class="w-full sm:w-auto border-white/30 text-white hover:bg-white/10">
+                    <BaseButton variant="outline"
+                                size="lg"
+                                href="#"
+                                class="w-full sm:w-auto border-white/30 text-white hover:bg-white/10">
                         En savoir plus
                     </BaseButton>
                 </div>
