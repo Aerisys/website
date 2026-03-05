@@ -1,7 +1,7 @@
 import express from 'express';
 import path from 'path';
 import {fileURLToPath} from 'url';
-import { connectDB } from './lib/mongoose.js';
+import {connectDB} from './lib/mongoose.js';
 import webhookRoutes from './routes/webhooks.js';
 import paymentRoutes from './routes/payments.js';
 import productRoutes from './routes/products.js';
@@ -33,7 +33,7 @@ if (process.env.NODE_ENV === 'production') {
     app.use(express.static(distPath));
 
     // SPA fallback
-    app.get('*', (req, res) => {
+    app.get('/:any*', (req, res) => {
         res.sendFile(path.join(distPath, 'index.html'));
     });
 }
