@@ -80,7 +80,7 @@ import FlipCard from "@/components/ui/FlipCard.vue";
             <div class="container-custom">
                 <SectionTitle title="Fonctionnalités" highlight="avancées"/>
                 <div class="mt-12 flex justify-center">
-                    <div class="grid grid-cols-2 gap-8 max-w-3xl">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl">
                         <FlipCard v-for="mobile in mobiles"
                                   :key="mobile.id"
                                   :title="mobile.title"

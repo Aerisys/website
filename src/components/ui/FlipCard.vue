@@ -1,8 +1,9 @@
 <template>
-    <div :class="cn('group h-80 w-72 perspective-[1000px] cursor-pointer', props.class)">
-        <div :class="cn('relative h-full rounded-2xl transition-all duration-500 transform-3d', rotation[0])">
+    <div :class="cn('group h-80 w-full md:w-72 perspective-[1000px] cursor-pointer', props.class)"
+         @click="flipped = !flipped">
+        <div :class="cn('relative h-full rounded-2xl transition-all duration-500 transform-3d', rotation[0], flipped && rotation[2])">
             <!-- Front -->
-            <div class="absolute size-full overflow-hidden rounded-2xl backface-hidden">
+            <div class="relative h-full overflow-hidden rounded-2xl backface-hidden">
                 <slot>
                     <div
                         class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-lg hover:border-gray-200 transition-all duration-300 h-full flex flex-col items-center justify-center gap-5">
@@ -31,7 +32,7 @@
             </div>
 
             <!-- Back -->
-            <div :class="cn('absolute h-full w-full overflow-hidden rounded-2xl backface-hidden', rotation[1])">
+            <div :class="cn('absolute top-0 h-full w-full overflow-hidden rounded-2xl backface-hidden', rotation[1])">
                 <slot name="back">
                     <div
                         class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-lg hover:border-gray-200 transition-all duration-300 h-full flex flex-col">
@@ -60,7 +61,7 @@
 
 <script setup lang="ts">
 import {cn} from "@/lib/utils";
-import {computed} from "vue";
+import {computed, ref} from "vue";
 
 interface FlipCardProps {
     rotate?: "x" | "y";
@@ -77,9 +78,11 @@ const props = withDefaults(defineProps<FlipCardProps>(), {
     icon: 'chip',
 });
 
+const flipped = ref(false);
+
 const rotationClass = {
-    x: ["group-hover:[transform:rotateX(180deg)]", "[transform:rotateX(180deg)]"],
-    y: ["group-hover:[transform:rotateY(180deg)]", "[transform:rotateY(180deg)]"],
+    x: ["md:group-hover:[transform:rotateX(180deg)]", "[transform:rotateX(180deg)]", "[transform:rotateX(180deg)]"],
+    y: ["md:group-hover:[transform:rotateY(180deg)]", "[transform:rotateY(180deg)]", "[transform:rotateY(180deg)]"],
 };
 
 const rotation = computed(() => rotationClass[props.rotate]);
