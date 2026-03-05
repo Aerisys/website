@@ -1,17 +1,20 @@
 <script setup>
-import { ref, computed, inject } from 'vue'
+import { ref, computed, inject, onMounted } from 'vue'
 import { useRoute, RouterLink } from 'vue-router'
 import BaseButton from '@/components/ui/BaseButton.vue'
-import { products, categories } from '@/data/products'
+import { useProducts } from '@/composables/useProducts'
 import { useCart } from '@/composables/useCart'
 
 const route = useRoute()
 const { addToCart } = useCart()
 const cartDrawerOpen = inject('cartDrawerOpen')
+const { products, categories, loading, fetchProducts } = useProducts()
 
-const product = computed(() => products.find(p => p.slug === route.params.slug))
+onMounted(() => fetchProducts())
+
+const product = computed(() => products.value.find(p => p.slug === route.params.slug))
 const categoryLabel = computed(() =>
-  categories.find(c => c.id === product.value?.category)?.label ?? ''
+  categories.value.find(c => c.id === product.value?.category)?.label ?? ''
 )
 
 const selectedImage = ref(0)
@@ -29,8 +32,16 @@ function handleAddToCart() {
 <template>
   <main class="pt-24 pb-16 bg-aerisys-gray min-h-screen">
     <div class="container-custom">
+      <!-- Loading -->
+      <div v-if="loading" class="flex justify-center py-20">
+        <svg class="animate-spin h-8 w-8 text-primary-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+        </svg>
+      </div>
+
       <!-- 404 state -->
-      <div v-if="!product" class="text-center py-20">
+      <div v-else-if="!product" class="text-center py-20">
         <p class="text-gray-500 text-lg mb-4">Produit introuvable.</p>
         <RouterLink to="/boutique" class="text-primary-600 font-medium hover:underline">
           Retour à la boutique

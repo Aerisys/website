@@ -29,6 +29,10 @@ const formComplete = computed(() =>
 const canPay = computed(() => !isEmpty.value && cguAccepted.value && formComplete.value)
 
 const customerName = computed(() => `${firstName.value.trim()} ${lastName.value.trim()}`)
+
+const cartItemsSummary = computed(() =>
+  items.map(item => `${item.name} x${item.quantity}`).join(', ')
+)
 </script>
 
 <template>
@@ -248,6 +252,7 @@ const customerName = computed(() => `${firstName.value.trim()} ${lastName.value.
               :currency="productCurrency"
               :customer-name="customerName"
               :customer-email="email.trim()"
+              :cart-items="cartItemsSummary"
             />
           </div>
         </div>

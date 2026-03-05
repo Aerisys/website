@@ -1,20 +1,21 @@
 <script setup>
 import { inject } from 'vue'
 import { RouterLink } from 'vue-router'
-import { categories } from '@/data/products'
 import { useCart } from '@/composables/useCart'
 
 const props = defineProps({
   product: {
     type: Object,
     required: true
+  },
+  categoryLabel: {
+    type: String,
+    default: ''
   }
 })
 
 const { addToCart } = useCart()
 const cartDrawerOpen = inject('cartDrawerOpen')
-
-const categoryLabel = categories.find(c => c.id === props.product.category)?.label ?? props.product.category
 
 function handleAdd(e) {
   e.preventDefault()

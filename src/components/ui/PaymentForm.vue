@@ -19,6 +19,10 @@ const props = defineProps({
   customerEmail: {
     type: String,
     default: ''
+  },
+  cartItems: {
+    type: String,
+    default: ''
   }
 })
 
@@ -48,7 +52,8 @@ onMounted(async () => {
         amount: props.amount,
         currency: props.currency,
         customerName: props.customerName,
-        customerEmail: props.customerEmail
+        customerEmail: props.customerEmail,
+        cartItems: props.cartItems
       })
     })
 

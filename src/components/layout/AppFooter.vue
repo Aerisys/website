@@ -37,7 +37,7 @@ const footerLinks = {
             href: '/checkout'
         },
         {
-            name: 'Selection',
+            name: 'Sélection',
             href: '/boutique'
         }
     ],

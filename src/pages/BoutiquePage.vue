@@ -3,18 +3,20 @@ import { ref, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import SectionTitle from '@/components/ui/SectionTitle.vue'
 import ProductCard from '@/components/ui/ProductCard.vue'
-import { categories, products } from '@/data/products'
+import { useProducts } from '@/composables/useProducts'
 import { useProductFilters } from '@/composables/useProductFilters'
 
 const route = useRoute()
+const { products, categories, loading, fetchProducts } = useProducts()
 const {
   activeCategory, sortBy, searchQuery,
   priceMin, priceMax, priceMinEuros, priceMaxEuros, priceBoundsEuros,
   inStockOnly, activeTags, allTags, priceBounds,
   categoryCounts, filteredProducts, resetFilters, toggleTag
-} = useProductFilters()
+} = useProductFilters(products)
 
-onMounted(() => {
+onMounted(async () => {
+  await fetchProducts()
   if (route.query.category) {
     activeCategory.value = route.query.category
   }
@@ -38,8 +40,8 @@ const tagsExpanded = ref(false)
 
 const hasActiveFilters = () => {
   return activeCategory.value || searchQuery.value || inStockOnly.value ||
-    activeTags.value.length || priceMin.value !== priceBounds.min ||
-    priceMax.value !== priceBounds.max
+    activeTags.value.length || priceMin.value !== priceBounds.value.min ||
+    priceMax.value !== priceBounds.value.max
 }
 </script>
 
@@ -215,20 +217,29 @@ const hasActiveFilters = () => {
             </button>
           </div>
 
+          <!-- Loading spinner -->
+          <div v-if="loading" class="flex justify-center py-20">
+            <svg class="animate-spin h-8 w-8 text-primary-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+            </svg>
+          </div>
+
           <!-- Products grid -->
           <div
-            v-if="filteredProducts.length"
+            v-else-if="filteredProducts.length"
             class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6"
           >
             <ProductCard
-              v-for="product in filteredProducts"
-              :key="product.id"
-              :product="product"
+              v-for="p in filteredProducts"
+              :key="p.id"
+              :product="p"
+              :categoryLabel="categories.find(c => c.id === p.category)?.label ?? ''"
             />
           </div>
 
           <!-- Empty state -->
-          <div v-else class="text-center py-20">
+          <div v-else-if="!loading" class="text-center py-20">
             <svg class="mx-auto w-16 h-16 text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
             </svg>

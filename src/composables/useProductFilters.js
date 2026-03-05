@@ -1,20 +1,31 @@
-import { ref, computed } from 'vue'
-import { products } from '@/data/products'
+import { ref, computed, watch } from 'vue'
 
-export function useProductFilters(initialCategory = '') {
-  // Price boundaries computed from real product data (in cents)
-  const priceBounds = {
-    min: Math.min(...products.map(p => p.price)),
-    max: Math.max(...products.map(p => p.price))
-  }
-
+export function useProductFilters(productsRef, initialCategory = '') {
   const activeCategory = ref(initialCategory)
   const sortBy = ref('name')
   const searchQuery = ref('')
-  const priceMin = ref(priceBounds.min)
-  const priceMax = ref(priceBounds.max)
   const inStockOnly = ref(false)
   const activeTags = ref([])
+
+  // Price boundaries computed reactively from productsRef
+  const priceBounds = computed(() => {
+    if (!productsRef.value.length) return { min: 0, max: 0 }
+    return {
+      min: Math.min(...productsRef.value.map(p => p.price)),
+      max: Math.max(...productsRef.value.map(p => p.price))
+    }
+  })
+
+  const priceMin = ref(0)
+  const priceMax = ref(0)
+
+  // Init price range when products arrive
+  watch(priceBounds, (bounds) => {
+    if (bounds.min !== bounds.max || bounds.min !== 0) {
+      priceMin.value = bounds.min
+      priceMax.value = bounds.max
+    }
+  }, { immediate: true })
 
   // Euro getters/setters for UI inputs
   const priceMinEuros = computed({
@@ -25,29 +36,29 @@ export function useProductFilters(initialCategory = '') {
     get: () => Math.round(priceMax.value / 100),
     set: (v) => { priceMax.value = (v || 0) * 100 }
   })
-  const priceBoundsEuros = {
-    min: Math.round(priceBounds.min / 100),
-    max: Math.round(priceBounds.max / 100)
-  }
+  const priceBoundsEuros = computed(() => ({
+    min: Math.round(priceBounds.value.min / 100),
+    max: Math.round(priceBounds.value.max / 100)
+  }))
 
   // All unique tags from products
   const allTags = computed(() => {
     const set = new Set()
-    products.forEach(p => p.tags.forEach(t => set.add(t)))
+    productsRef.value.forEach(p => p.tags.forEach(t => set.add(t)))
     return [...set].sort()
   })
 
   // Product count per category (always based on full catalog)
   const categoryCounts = computed(() => {
     const counts = {}
-    products.forEach(p => {
+    productsRef.value.forEach(p => {
       counts[p.category] = (counts[p.category] || 0) + 1
     })
     return counts
   })
 
   const filteredProducts = computed(() => {
-    let result = [...products]
+    let result = [...productsRef.value]
 
     // Filter by category
     if (activeCategory.value) {
@@ -95,8 +106,8 @@ export function useProductFilters(initialCategory = '') {
     activeCategory.value = ''
     sortBy.value = 'name'
     searchQuery.value = ''
-    priceMin.value = priceBounds.min
-    priceMax.value = priceBounds.max
+    priceMin.value = priceBounds.value.min
+    priceMax.value = priceBounds.value.max
     inStockOnly.value = false
     activeTags.value = []
   }
