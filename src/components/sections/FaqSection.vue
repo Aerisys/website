@@ -11,14 +11,13 @@ const {
 </script>
 
 <template>
-    <section id="faq" class="section-padding bg-gray-50">
+    <section id="faq"
+             class="section-padding bg-gray-50">
         <div class="container-custom">
-            <SectionTitle
-                label="FREQUENTLY ASKED QUESTIONS"
-                title="Tout ce que vous devez savoir sur"
-                highlight=""
-                :centered="true"
-            >
+            <SectionTitle label="FREQUENTLY ASKED QUESTIONS"
+                          title="Tout ce que vous devez savoir sur"
+                          highlight=""
+                          :centered="true">
         <span class="block text-3xl md:text-4xl font-display font-bold text-primary-500 mt-2">
           Aerisys
         </span>
@@ -27,14 +26,12 @@ const {
             <div class="mt-12 max-w-3xl mx-auto">
                 <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
                     <div class="divide-y divide-gray-100">
-                        <FaqAccordion
-                            v-for="item in faqItems"
-                            :key="item.id"
-                            :item="item"
-                            :is-open="isOpen(item.id)"
-                            class="px-6"
-                            @toggle="toggle"
-                        />
+                        <FaqAccordion v-for="item in faqItems"
+                                      :key="item.id"
+                                      :item="item"
+                                      :is-open="isOpen(item.id)"
+                                      class="px-6"
+                                      @toggle="toggle"/>
                     </div>
                 </div>
             </div>
