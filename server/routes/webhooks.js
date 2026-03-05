@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import express from 'express'
 import stripe from '../lib/stripe.js'
+import Order from '../models/Order.js'
 
 const router = Router()
 
@@ -22,6 +23,21 @@ router.post('/api/stripe-webhook', express.raw({ type: 'application/json' }), as
       const customerName = pi.metadata?.customer_name || 'N/A'
       const customerEmail = pi.metadata?.customer_email || pi.receipt_email || 'N/A'
       console.log(`[COMMANDE CONFIRMÉE] ${orderNumber} — ${(pi.amount / 100).toFixed(2)} ${pi.currency.toUpperCase()} — Client: ${customerName} (${customerEmail})`)
+
+      try {
+        await Order.create({
+          orderNumber,
+          stripePaymentIntentId: pi.id,
+          amount: pi.amount,
+          currency: pi.currency,
+          customerName,
+          customerEmail,
+          cartSummary: pi.metadata?.cart_summary || '',
+          status: 'succeeded'
+        })
+      } catch (err) {
+        console.error('Error saving order:', err.message)
+      }
       break
     }
     case 'payment_intent.payment_failed': {

@@ -1,9 +1,14 @@
 import express from 'express';
 import path from 'path';
 import {fileURLToPath} from 'url';
+import { connectDB } from './lib/mongoose.js';
 import webhookRoutes from './routes/webhooks.js';
 import paymentRoutes from './routes/payments.js';
 import productRoutes from './routes/products.js';
+import adminAuthRoutes from './routes/admin/auth.js';
+import adminProductRoutes from './routes/admin/products.js';
+import adminOrderRoutes from './routes/admin/orders.js';
+import adminCategoryRoutes from './routes/admin/categories.js';
 
 const app = express();
 
@@ -15,6 +20,10 @@ app.use(express.json());
 
 app.use(paymentRoutes);
 app.use(productRoutes);
+app.use(adminAuthRoutes);
+app.use(adminProductRoutes);
+app.use(adminOrderRoutes);
+app.use(adminCategoryRoutes);
 
 // Production: serve built frontend
 if (process.env.NODE_ENV === 'production') {
@@ -30,6 +39,8 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 const port = process.env.PORT || 3001;
+
+await connectDB();
 app.listen(port, () => {
     console.log(`API: http://localhost:${port}`);
 });
