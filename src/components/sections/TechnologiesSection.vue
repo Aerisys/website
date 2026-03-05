@@ -25,7 +25,9 @@ import FlipCard from '@/components/ui/FlipCard.vue';
             <div class="mt-12 text-center">
                 <BaseButton variant="primary"
                             size="lg"
-                            href="#">
+                            href="https://wiki.aerisys.fr/"
+                            target="_blank"
+                            rel="noopener noreferrer">
                     Documentation
                 </BaseButton>
             </div>
