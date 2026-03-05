@@ -13,7 +13,7 @@ import FlipCard from '@/components/ui/FlipCard.vue';
                           highlight=" Aerisys"
                           :centered="true"/>
             <div class="mt-12 flex justify-center">
-                <div class="grid grid-cols-2 gap-8 max-w-3xl">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl">
                     <FlipCard v-for="feature in features"
                               :key="feature.id"
                               :title="feature.title"
