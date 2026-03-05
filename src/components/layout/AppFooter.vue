@@ -40,9 +40,10 @@ const handleSubmit = () => {
                 <!-- Logo & Description -->
                 <div class="col-span-2 md:col-span-1">
                     <RouterLink to="/"
-                                class="flex items-center gap-2 mb-4">
+                                class="flex items-center gap-2 mb-4"
+                                aria-label="Aerisys - Accueil">
                         <img src="/logo/white.svg"
-                             alt="Logo"
+                             alt="Logo Aerisys"
                              class="h-10 w-10 ml-0"/>
                         <span class="text-xl font-bold font-display transition-colors text-white">
                             AERISYS

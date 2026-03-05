@@ -1,15 +1,110 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" type="image/png" href="/logo/favicon-96x96.png" sizes="96x96" />
-        <link rel="icon" type="image/svg+xml" href="/logo/favicon.svg" />
-        <link rel="shortcut icon" href="/logo/favicon.ico" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/logo/apple-touch-icon.png" />
-        <meta name="apple-mobile-web-app-title" content="Aerisys" />
-        <link rel="manifest" href="/logo/site.webmanifest" />
-		<title>Aerisys</title>
+
+		<!-- SEO Meta Tags -->
+		<title>Aerisys — Drone DIY Open Source | Kits, Composants & Tutoriels</title>
+		<meta name="description" content="Aerisys propose des kits et composants open-source pour construire votre propre drone DIY. Conçu pour les étudiants, makers et passionnés de robotique." />
+		<meta name="keywords" content="drone DIY, drone open source, kit drone, ESP32, impression 3D, robotique, aéronautique, éducatif, maker" />
+		<meta name="author" content="Aerisys" />
+		<meta name="robots" content="index, follow" />
+		<link rel="canonical" href="https://aerisys.fr/" />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://aerisys.fr/" />
+		<meta property="og:title" content="Aerisys — Drone DIY Open Source | Kits, Composants & Tutoriels" />
+		<meta property="og:description" content="Aerisys propose des kits et composants open-source pour construire votre propre drone DIY. Conçu pour les étudiants, makers et passionnés de robotique." />
+		<meta property="og:image" content="https://aerisys.fr/logo/black-full.jpg" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:locale" content="fr_FR" />
+		<meta property="og:site_name" content="Aerisys" />
+
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="Aerisys — Drone DIY Open Source" />
+		<meta name="twitter:description" content="Construisez votre propre drone avec nos kits open-source. Pour étudiants, makers et passionnés." />
+		<meta name="twitter:image" content="https://aerisys.fr/logo/black-full.jpg" />
+
+		<!-- Theme -->
+		<meta name="theme-color" content="#4E92CE" />
+		<meta name="msapplication-TileColor" content="#4E92CE" />
+
+		<!-- Favicons -->
+		<link rel="icon" type="image/png" href="/logo/favicon-96x96.png" sizes="96x96" />
+		<link rel="icon" type="image/svg+xml" href="/logo/favicon.svg" />
+		<link rel="shortcut icon" href="/logo/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/logo/apple-touch-icon.png" />
+		<meta name="apple-mobile-web-app-title" content="Aerisys" />
+		<link rel="manifest" href="/logo/site.webmanifest" />
+
+		<!-- Structured Data (JSON-LD) -->
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "Organization",
+			"name": "Aerisys",
+			"url": "https://aerisys.fr",
+			"logo": "https://aerisys.fr/logo/black-full.jpg",
+			"description": "Aerisys propose des kits et composants open-source pour construire votre propre drone DIY.",
+			"sameAs": [
+				"https://www.linkedin.com/company/aerisys/"
+			]
+		}
+		</script>
+
+		<!-- FAQ Structured Data -->
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "FAQPage",
+			"mainEntity": [
+				{
+					"@type": "Question",
+					"name": "Qu'est-ce qu'Aerisys ?",
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": "Aerisys est un projet éducatif qui permet aux étudiants, makers et passionnés de robotique de construire leur propre drone. Notre kit open-source comprend tous les composants et la documentation nécessaires pour apprendre l'électronique, la programmation et l'aéronautique."
+					}
+				},
+				{
+					"@type": "Question",
+					"name": "Quel coût ?",
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": "Le kit Aerisys est conçu pour être accessible. Le prix varie selon la configuration choisie, mais notre objectif est de proposer une solution éducative abordable. Contactez-nous pour obtenir un devis personnalisé."
+					}
+				},
+				{
+					"@type": "Question",
+					"name": "Temps d'assemblage ?",
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": "Le temps d'assemblage varie selon votre expérience. Un débutant peut assembler le drone en 4 à 6 heures avec notre guide pas à pas. Les makers expérimentés peuvent le faire en 2 à 3 heures."
+					}
+				},
+				{
+					"@type": "Question",
+					"name": "Code open source ?",
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": "Oui, tout le code source d'Aerisys est disponible en open source. Vous pouvez l'étudier, le modifier et contribuer au projet. Nous croyons en l'apprentissage par la pratique et le partage des connaissances."
+					}
+				},
+				{
+					"@type": "Question",
+					"name": "Autonomie de vol ?",
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": "L'autonomie de vol dépend de la batterie utilisée et des conditions de vol. Avec la batterie standard, vous pouvez voler environ 10 à 15 minutes. Des batteries de plus grande capacité sont disponibles en option."
+					}
+				}
+			]
+		}
+		</script>
 	</head>
 	<body>
 		<div id="app"></div>

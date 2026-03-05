@@ -5,7 +5,7 @@ import TeamCard from '@/components/ui/TeamCard.vue'
 </script>
 
 <template>
-    <section id="equipe" class="section-padding bg-white">
+    <section id="equipe" aria-label="L'équipe Aerisys" class="section-padding bg-white">
         <div class="container-custom">
             <SectionTitle label="L'ÉQUIPE"
                           title="Les talents derrière"
