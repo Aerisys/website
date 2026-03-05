@@ -61,7 +61,7 @@ const currentYear = new Date().getFullYear();
 <template>
     <footer class="bg-gray-900 text-white">
         <div class="container-custom py-12 md:py-16">
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
+            <div class="grid grid-cols-2 md:grid-cols-6 gap-8">
                 <!-- Logo & Description -->
                 <div class="col-span-2 md:col-span-1">
                     <RouterLink to="/"
