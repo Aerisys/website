@@ -3,7 +3,7 @@ import HomePage from '@/pages/HomePage.vue'
 import AppMobile from '@/pages/AppMobile.vue'
 
 const DEFAULT_TITLE = 'Aerisys — Drone DIY Open Source | Kits, Composants & Tutoriels'
-const DEFAULT_DESCRIPTION = 'Aerisys propose des kits et composants open-source pour construire votre propre drone DIY. Conçu pour les étudiants, makers et passionnés de robotique.'
+const DEFAULT_DESCRIPTION = 'Aerisys : kit drone DIY open source à construire soi-même. Châssis impression 3D, ESP32, application mobile. Idéal pour étudiants, makers et passionnés de robotique et aéronautique.'
 
 const router = createRouter({
     history: createWebHistory(),
@@ -22,8 +22,8 @@ const router = createRouter({
             name: 'app-mobile',
             component: AppMobile,
             meta: {
-                title: 'Application Mobile — Aerisys | Pilotez votre drone',
-                description: 'L\'application mobile Aerisys vous permet de piloter, configurer et analyser votre drone DIY depuis votre smartphone. Disponible sur iOS et Android.',
+                title: 'Application Mobile Drone DIY — Aerisys | Pilotez votre drone depuis votre smartphone',
+                description: 'L\'application mobile Aerisys : pilotez, configurez et analysez votre drone DIY open source depuis votre smartphone. Interface intuitive disponible sur iOS et Android.',
             },
         },
     ],
