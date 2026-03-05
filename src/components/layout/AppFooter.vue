@@ -17,9 +17,9 @@ const footerLinks = {
         {name: 'Selection', href: '#'}
     ],
     wiki: [
-        {name: 'Assemblage', href: '#'},
-        {name: 'Calibration', href: '#'},
-        {name: 'Dépannage', href: '#'}
+        {name: 'Assemblage', href: 'https://wiki.aerisys.fr/'},
+        {name: 'Calibration', href: 'https://wiki.aerisys.fr/'},
+        {name: 'Dépannage', href: 'https://wiki.aerisys.fr/'}
     ]
 }
 
@@ -86,6 +86,8 @@ const handleSubmit = () => {
                         <li v-for="link in footerLinks.wiki"
                             :key="link.name">
                             <a :href="link.href"
+                               target="_blank"
+                               rel="noopener noreferrer"
                                class="text-gray-300 hover:text-white transition-colors text-sm">
                                 {{ link.name }}
                             </a>
