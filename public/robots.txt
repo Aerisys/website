@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aerisys.fr/sitemap.xml
+

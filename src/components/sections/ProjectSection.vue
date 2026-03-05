@@ -4,6 +4,7 @@ import SectionTitle from '@/components/ui/SectionTitle.vue';
 
 <template>
     <section id="projet"
+             aria-label="Le projet Aerisys"
              class="section-padding bg-white">
         <div class="container-custom">
             <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">

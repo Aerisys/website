@@ -4,7 +4,7 @@ import SectionTitle from '@/components/ui/SectionTitle.vue'
 </script>
 
 <template>
-    <section class="section-padding bg-gray-50">
+    <section aria-label="Galerie photos" class="section-padding bg-gray-50">
         <div class="container-custom">
             <SectionTitle label="GALERIE"
                           title=""

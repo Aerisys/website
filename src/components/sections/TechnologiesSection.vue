@@ -6,7 +6,7 @@ import FlipCard from '@/components/ui/FlipCard.vue';
 </script>
 
 <template>
-    <section class="section-padding bg-white">
+    <section aria-label="Technologies utilisées" class="section-padding bg-white">
         <div class="container-custom">
             <SectionTitle label="TECHNOLOGIES"
                           title="Les outils et composants qui font voler"

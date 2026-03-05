@@ -5,8 +5,8 @@ import FlipCard from "@/components/ui/FlipCard.vue";
 </script>
 
 <template>
-    <div>
-        <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <main>
+        <section aria-label="Application mobile Aerisys" class="relative min-h-screen flex items-center justify-center overflow-hidden">
             <!-- Background Image -->
             <div class="absolute inset-0 h-full w-full z-10">
                 <div class="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -76,7 +76,7 @@ import FlipCard from "@/components/ui/FlipCard.vue";
         <!--      </div>-->
         <!--    </section>-->
 
-        <section class="section-padding bg-gray-50">
+        <section aria-label="Fonctionnalités de l'application" class="section-padding bg-gray-50">
             <div class="container-custom">
                 <SectionTitle title="Fonctionnalités" highlight="avancées"/>
                 <div class="mt-12 flex justify-center">
@@ -90,6 +90,6 @@ import FlipCard from "@/components/ui/FlipCard.vue";
                 </div>
             </div>
         </section>
-    </div>
+    </main>
 </template>
 

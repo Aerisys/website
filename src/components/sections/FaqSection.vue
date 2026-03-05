@@ -12,6 +12,7 @@ const {
 
 <template>
     <section id="faq"
+             aria-label="Questions fréquentes"
              class="section-padding bg-gray-50">
         <div class="container-custom">
             <SectionTitle label="FREQUENTLY ASKED QUESTIONS"

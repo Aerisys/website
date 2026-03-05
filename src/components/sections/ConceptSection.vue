@@ -3,7 +3,7 @@ import SectionTitle from '@/components/ui/SectionTitle.vue';
 </script>
 
 <template>
-    <section class="section-padding bg-linear-to-br from-primary-50 via-blue-50 to-sky-50">
+    <section aria-label="Le concept Aerisys" class="section-padding bg-linear-to-br from-primary-50 via-blue-50 to-sky-50">
         <div class="container-custom">
             <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                 <!-- Content -->
