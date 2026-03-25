@@ -1,4 +1,5 @@
 import {createRouter, createWebHistory} from 'vue-router'
+import { trackPageView } from '@/composables/useAnalytics'
 import HomePage from '@/pages/HomePage.vue'
 import AppMobile from '@/pages/AppMobile.vue'
 import CheckoutPage from '@/pages/CheckoutPage.vue'
@@ -82,6 +83,8 @@ router.afterEach((to) => {
     if (canonical) {
         canonical.setAttribute('href', `https://aerisys.fr${to.path}`)
     }
+
+    trackPageView(to.path, to.meta.title || DEFAULT_TITLE)
 })
 
 export default router

@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /boutique/admin
+Disallow: /checkout
+Disallow: /checkout/success
 
 Sitemap: https://aerisys.fr/sitemap.xml
-
