@@ -62,10 +62,7 @@ function close() {
         <div class="flex-1 overflow-y-auto px-6 py-4">
           <!-- Empty state -->
           <div v-if="isEmpty" class="flex flex-col items-center justify-center h-full text-center">
-            <svg class="w-16 h-16 text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z" />
-            </svg>
+            <img src="/icons/shopping-cart.svg" alt="Panier vide" class="w-16 h-16 opacity-30 mb-4" />
             <p class="text-gray-500 mb-4">Votre panier est vide</p>
             <RouterLink to="/boutique" @click="close">
               <BaseButton variant="primary" size="sm">
