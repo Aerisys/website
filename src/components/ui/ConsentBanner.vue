@@ -21,7 +21,7 @@ const { hasConsented, acceptConsent, refuseConsent } = useConsent()
     >
       <div class="container-custom py-4 flex flex-col sm:flex-row items-center gap-4">
         <p class="text-sm text-gray-600 flex-1 text-center sm:text-left">
-          Ce site utilise des cookies essentiels au fonctionnement et au traitement des paiements via Stripe.
+          Ce site utilise des cookies essentiels au fonctionnement, au traitement des paiements via Stripe, ainsi que des cookies de mesure d'audience (Google Analytics).
           <RouterLink to="/politique-confidentialite" class="text-primary-600 hover:underline font-medium">En savoir plus</RouterLink>
         </p>
         <div class="flex gap-3 flex-shrink-0">

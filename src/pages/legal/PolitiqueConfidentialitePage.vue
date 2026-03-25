@@ -83,6 +83,27 @@
           </p>
         </section>
 
+        <section class="mb-8">
+          <h2 class="text-xl font-semibold text-gray-900 mb-3">Mesure d'audience — Google Analytics</h2>
+          <p class="text-gray-600 leading-relaxed mb-2">
+            Sous réserve de votre consentement, ce site utilise <strong>Google Analytics</strong> (Google Ireland Limited)
+            et <strong>Google Tag Manager</strong> afin de mesurer l'audience et d'améliorer l'expérience utilisateur.
+          </p>
+          <ul class="list-disc list-inside text-gray-600 space-y-1">
+            <li><strong>Données collectées</strong> : pages consultées, durée de visite, type d'appareil, source de trafic, localisation approximative (pays / ville)</li>
+            <li><strong>Base légale</strong> : votre consentement (article 6.1.a du RGPD), recueilli via le bandeau cookies</li>
+            <li><strong>Durée de conservation</strong> : 14 mois maximum (paramétrage Google Analytics)</li>
+            <li><strong>Transferts</strong> : les données sont traitées par Google Ireland Limited. Consultez la
+              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" class="text-primary-600 hover:underline">politique de confidentialité de Google</a>
+            </li>
+          </ul>
+          <p class="text-gray-600 leading-relaxed mt-2">
+            Si vous refusez le bandeau cookies, aucun script de mesure d'audience n'est chargé et aucune donnée n'est transmise à Google.
+            Vous pouvez également installer le
+            <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" class="text-primary-600 hover:underline">module complémentaire de désactivation Google Analytics</a>.
+          </p>
+        </section>
+
         <section>
           <h2 class="text-xl font-semibold text-gray-900 mb-3">Cookies et stockage local</h2>
           <p class="text-gray-600 leading-relaxed mb-2">
@@ -91,11 +112,9 @@
           <ul class="list-disc list-inside text-gray-600 space-y-1">
             <li><strong>aerisys-consent</strong> (localStorage) : mémorise votre choix concernant le bandeau cookies</li>
             <li><strong>aerisys-cart</strong> (sessionStorage) : stocke le contenu de votre panier durant votre session</li>
-            <li><strong>Cookies Stripe</strong> : cookies essentiels au fonctionnement du module de paiement sécurisé (aucun cookie publicitaire)</li>
+            <li><strong>Cookies Stripe</strong> : cookies essentiels au fonctionnement du module de paiement sécurisé</li>
+            <li><strong>Cookies Google Analytics / GTM</strong> (_ga, _gid, _gat) : mesure d'audience — <strong>chargés uniquement après votre consentement</strong></li>
           </ul>
-          <p class="text-gray-600 leading-relaxed mt-2">
-            Aucun cookie publicitaire ou de suivi n'est utilisé sur ce site.
-          </p>
         </section>
       </div>
     </div>
