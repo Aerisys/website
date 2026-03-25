@@ -59,7 +59,7 @@ const hasActiveFilters = () => {
 
         <!-- ======== DESKTOP SIDEBAR (lg+) ======== -->
         <aside class="hidden lg:block w-72 shrink-0">
-          <div class="bg-white rounded-2xl border border-gray-200 p-6 space-y-6 sticky top-28 max-h-[calc(100vh-8rem)] overflow-y-auto">
+          <div class="bg-white rounded-2xl border border-gray-200 p-6 space-y-6 sticky top-28 max-h-[calc(100vh-8rem)] overflow-y-auto scrollbar-hide">
 
             <!-- Search -->
             <div>
@@ -433,3 +433,13 @@ const hasActiveFilters = () => {
     </Teleport>
   </main>
 </template>
+
+<style scoped>
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+</style>
