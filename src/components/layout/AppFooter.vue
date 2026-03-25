@@ -9,7 +9,7 @@ const footerLinks = {
         },
         {
             name: 'Le projet',
-            href: '/projet'
+            href: '#projet'
         },
         {
             name: 'L\'équipe',
