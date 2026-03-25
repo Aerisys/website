@@ -7,6 +7,7 @@ import BaseButton from '@/components/ui/BaseButton.vue';
         <!-- Background Image -->
         <div class="absolute inset-0 h-full w-full z-10">
             <div class="absolute inset-0 bg-[url('/images/home/hero-bg.png')] bg-cover bg-center bg-no-repeat"/>
+            <div class="absolute inset-0 bg-[#101828]/50"/>
         </div>
 
         <!-- Content -->
@@ -20,7 +21,7 @@ import BaseButton from '@/components/ui/BaseButton.vue';
 
             <!-- Texte centré -->
             <div class="grow flex  justify-center">
-                <p class="max-w-2xl mx-auto text-lg md:text-xl text-gray-300 leading-relaxed">
+                <p class="max-w-2xl mx-auto text-lg md:text-xl text-white leading-relaxed">
                     Aerisys propose des kits, composants et tutoriels pour construire et maîtriser votre propre
                     drone DRPF à impression 3D. Systèmes embarqués et projet open-source.
                 </p>
