@@ -152,6 +152,17 @@ sudo ufw enable
 4. Copier le Signing secret dans `.env` (`STRIPE_WEBHOOK_SECRET`)
 5. `pm2 restart aerisys`
 
+## 11. Dossier uploads/ (images produits)
+
+Le dossier `uploads/` est cree automatiquement au premier upload, mais il est ignore par git. **Il vit sur le VPS et doit etre sauvegarde separement de la BD.**
+
+```bash
+# Backup manuel
+tar -czf uploads-$(date +%F).tar.gz -C /var/www/aerisys uploads
+```
+
+Pour automatiser, ajouter une tache cron qui copie `/var/www/aerisys/uploads/` vers un stockage externe (S3, autre VPS, etc.).
+
 ## Mise a jour
 
 ```bash
@@ -161,3 +172,5 @@ npm install
 npm run build
 pm2 restart aerisys
 ```
+
+Le dossier `uploads/` est preserve par `git pull` (il est gitignore).

@@ -9,6 +9,7 @@ import adminAuthRoutes from './routes/admin/auth.js';
 import adminProductRoutes from './routes/admin/products.js';
 import adminOrderRoutes from './routes/admin/orders.js';
 import adminCategoryRoutes from './routes/admin/categories.js';
+import adminUploadRoutes from './routes/admin/uploads.js';
 
 const app = express();
 
@@ -24,10 +25,14 @@ app.use(adminAuthRoutes);
 app.use(adminProductRoutes);
 app.use(adminOrderRoutes);
 app.use(adminCategoryRoutes);
+app.use(adminUploadRoutes);
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const uploadsPath = path.resolve(__dirname, '..', 'uploads');
+app.use('/uploads', express.static(uploadsPath));
 
 // Production: serve built frontend
 if (process.env.NODE_ENV === 'production') {
-    const __dirname = path.dirname(fileURLToPath(import.meta.url));
     const distPath = path.resolve(__dirname, '..', 'dist');
 
     app.use(express.static(distPath));
