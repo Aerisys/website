@@ -27,7 +27,7 @@ export function useAuth() {
   }
 
   async function authFetch(url, options = {}) {
-    return fetch(url, {
+    const res = await fetch(url, {
       ...options,
       headers: {
         'Content-Type': 'application/json',
@@ -35,6 +35,13 @@ export function useAuth() {
         ...(token.value ? { Authorization: `Bearer ${token.value}` } : {})
       }
     })
+    if (res.status === 401) {
+      logout()
+      if (typeof window !== 'undefined' && !window.location.pathname.endsWith('/admin')) {
+        window.location.href = '/boutique/admin'
+      }
+    }
+    return res
   }
 
   return { token, loading, isAuthenticated, login, logout, authFetch }

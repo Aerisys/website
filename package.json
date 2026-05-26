@@ -20,6 +20,7 @@
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.2.4",
     "motion-v": "^1.7.4",
+    "multer": "^2.1.1",
     "stripe": "^20.4.0",
     "tailwindcss": "^4.1.18",
     "vue": "^3.5.24",
