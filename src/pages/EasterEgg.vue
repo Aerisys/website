@@ -1,19 +1,19 @@
 <template>
-<div>
-    <Transition name="modal">
-        <div v-if="showModal" class="modal-overlay" @click="closeModal">
-            <div class="modal-content" @click.stop>
-                <button class="close-btn" @click="closeModal">✕</button>
-                <h2>SHREK !!!</h2>
-                <img
-                    src="/images/shrek.jpg"
-                    alt="Easter Egg"
-                    class="easter-egg-img"
-                />
+    <div>
+        <Transition name="modal">
+            <div v-if="showModal" class="modal-overlay" @click="closeModal">
+                <div class="modal-content" @click.stop>
+                    <button class="close-btn" @click="closeModal">✕</button>
+                    <h2>SHREK !!!</h2>
+                    <img
+                        src="/images/shrek.jpg"
+                        alt="Easter Egg"
+                        class="easter-egg-img"
+                    />
+                </div>
             </div>
-        </div>
-    </Transition>
-</div>
+        </Transition>
+    </div>
 </template>
 
 <script setup>
