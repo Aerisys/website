@@ -1,16 +1,5 @@
 <template>
 <div>
-    <Transition name="fade">
-        <div v-if="tapCount > 0" class="tap-feedback">
-                <span
-                    v-for="i in REQUIRED_TAPS"
-                    :key="i"
-                    class="tap-dot"
-                    :class="{ active: i <= tapCount }"
-                />
-        </div>
-    </Transition>
-
     <Transition name="modal">
         <div v-if="showModal" class="modal-overlay" @click="closeModal">
             <div class="modal-content" @click.stop>
@@ -74,7 +63,11 @@
         touchStartY = e.touches[0].clientY
     }
 
+    let justOpened = false  // 👈 flag à ajouter
+
     const handleTouchEnd = (e) => {
+        if (showModal.value) return
+
         const deltaX = Math.abs(e.changedTouches[0].clientX - touchStartX)
         const deltaY = Math.abs(e.changedTouches[0].clientY - touchStartY)
 
@@ -99,6 +92,10 @@
 
         if (tapCount.value >= REQUIRED_TAPS) {
             showModal.value = true
+            justOpened = true           // 👈 on marque l'ouverture
+            setTimeout(() => {
+                justOpened = false      // 👈 on retire le flag après 300ms
+            }, 300)
             resetTaps()
         }
     }
@@ -114,6 +111,7 @@
     // MODAL
     // ─────────────────────────────────────
     const closeModal = () => {
+        if (justOpened) return  // 👈 on bloque la fermeture immédiate
         showModal.value = false
     }
 
@@ -136,32 +134,6 @@
 </script>
 
 <style scoped>
-/* ── Feedback taps ── */
-.tap-feedback {
-    position: fixed;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 10px;
-    z-index: 9998;
-}
-
-.tap-dot {
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    border: 2px solid white;
-    transition: background 0.15s, transform 0.15s;
-}
-
-.tap-dot.active {
-    background: #e94560;
-    border-color: #e94560;
-    transform: scale(1.3);
-}
-
 /* ── Modal ── */
 .modal-overlay {
     position: fixed;
