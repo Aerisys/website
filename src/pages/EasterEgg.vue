@@ -20,6 +20,11 @@
     import { ref, onMounted, onUnmounted } from 'vue'
 
     const showModal = ref(false)
+    const tapCount = ref(0)
+
+    const REQUIRED_TAPS = 4
+    const TAP_THRESHOLD = 10
+    const TIME_WINDOW = 1000
 
     const KONAMI_CODE = [
         'ArrowUp', 'ArrowUp',
@@ -48,20 +53,88 @@
         }
     }
 
+    let tapTimer = null
+    let touchStartX = 0
+    let touchStartY = 0
+    let resetFeedbackTimer = null
+
+    const handleTouchStart = (e) => {
+        touchStartX = e.touches[0].clientX
+        touchStartY = e.touches[0].clientY
+    }
+
+    let justOpened = false  // 👈 flag à ajouter
+
+    const handleTouchEnd = (e) => {
+        if (showModal.value) return
+
+        const deltaX = Math.abs(e.changedTouches[0].clientX - touchStartX)
+        const deltaY = Math.abs(e.changedTouches[0].clientY - touchStartY)
+
+        const isTap = deltaX < TAP_THRESHOLD && deltaY < TAP_THRESHOLD
+        if (!isTap) {
+            resetTaps()
+            return
+        }
+
+        tapCount.value++
+
+        clearTimeout(resetFeedbackTimer)
+        resetFeedbackTimer = setTimeout(() => {
+            tapCount.value = 0
+        }, 1200)
+
+        if (tapCount.value === 1) {
+            tapTimer = setTimeout(() => {
+                resetTaps()
+            }, TIME_WINDOW)
+        }
+
+        if (tapCount.value >= REQUIRED_TAPS) {
+            showModal.value = true
+            justOpened = true           // 👈 on marque l'ouverture
+            setTimeout(() => {
+                justOpened = false      // 👈 on retire le flag après 300ms
+            }, 300)
+            resetTaps()
+        }
+    }
+
+    const resetTaps = () => {
+        tapCount.value = 0
+        clearTimeout(tapTimer)
+        clearTimeout(resetFeedbackTimer)
+        tapTimer = null
+    }
+
+    // ─────────────────────────────────────
+    // MODAL
+    // ─────────────────────────────────────
     const closeModal = () => {
+        if (justOpened) return  // 👈 on bloque la fermeture immédiate
         showModal.value = false
     }
 
+    // ─────────────────────────────────────
+    // LIFECYCLE
+    // ─────────────────────────────────────
     onMounted(() => {
         window.addEventListener('keydown', handleKeydown)
+        window.addEventListener('touchstart', handleTouchStart, { passive: true })
+        window.addEventListener('touchend', handleTouchEnd, { passive: true })
     })
 
     onUnmounted(() => {
         window.removeEventListener('keydown', handleKeydown)
+        window.removeEventListener('touchstart', handleTouchStart)
+        window.removeEventListener('touchend', handleTouchEnd)
+        clearTimeout(tapTimer)
+        clearTimeout(resetFeedbackTimer)
     })
 </script>
 
 <style scoped>
+/* ── Modal ── */
 .modal-overlay {
     position: fixed;
     inset: 0;
