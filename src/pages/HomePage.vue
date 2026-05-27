@@ -6,6 +6,7 @@ import TechnologiesSection from '@/components/sections/TechnologiesSection.vue'
 import GallerySection from '@/components/sections/GallerySection.vue'
 import TeamSection from '@/components/sections/TeamSection.vue'
 import FaqSection from '@/components/sections/FaqSection.vue'
+import EasterEgg from '@/pages/EasterEgg.vue'
 </script>
 
 <template>
@@ -17,6 +18,7 @@ import FaqSection from '@/components/sections/FaqSection.vue'
         <GallerySection/>
         <TeamSection/>
         <FaqSection/>
+        <EasterEgg/>
     </main>
 </template>
 
